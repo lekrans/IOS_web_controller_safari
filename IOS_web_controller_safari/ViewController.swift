@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices // <- import
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SFSafariViewControllerDelegate { // <- delegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,5 +17,17 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func showWebContent(_ sender: Any) {
+        let url = URL(string: "https://google.com")
+        let safariVC = SFSafariViewController(url: url!)
+        safariVC.delegate = self
+        present(safariVC, animated: true) {
+            print("presented")
+        }
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        print("safari finished!")
+    }
 }
 
