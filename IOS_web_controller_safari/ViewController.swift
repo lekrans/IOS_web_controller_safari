@@ -26,6 +26,11 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate { // <- d
         }
     }
     
+    @IBAction func showSafari(_ sender: Any) {
+        let url = URL(string: "https://google.com")
+        UIApplication.shared.open(url!, options: [UIApplication.OpenExternalURLOptionsKey(rawValue: ""):""], completionHandler: nil)
+    }
+    
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         print("safari finished!")
     }
